@@ -54,13 +54,37 @@ function loadCategoriesJSON () {
                         for (let j = 0; j < data.fields[i].categories.length; j++) {
                             newHTML += `
                                         <h3>${data.fields[i].categories[j].category_name}</h3>
+                                        `
+                            
+                            if (data.fields[i].categories[j].description) {
+                                newHTML += `
+                                            <p class="description">
+                                                ${data.fields[i].categories[j].description}
+                                            </p>
+                                            `
+                            }
+
+                            newHTML += `
                                         <ul>
                                         `
 
                             for (let k = 0; k < data.fields[i].categories[j].nominees.length; k++) {
                                 newHTML += `
                                             <li>
-                                            <h4>${data.fields[i].categories[j].nominees[k].nominee}</h4>
+                                            `
+
+                                if (k == data.fields[i].categories[j].winner_id) {
+                                    newHTML += `
+                                                <h4 class="winner">${data.fields[i].categories[j].nominees[k].nominee}</h4>
+                                                <span>WINNER!</span>
+                                                `
+                                } else {
+                                    newHTML += `
+                                                <h4>${data.fields[i].categories[j].nominees[k].nominee}</h4>
+                                                `
+                                }
+                                
+                                newHTML += `
                                             <p>${data.fields[i].categories[j].nominees[k].artist}</p>
                                             <p class="description">${data.fields[i].categories[j].nominees[k].info}</p>
                                             `
