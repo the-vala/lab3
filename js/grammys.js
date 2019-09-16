@@ -29,6 +29,8 @@ function loadCategoriesJSON () {
         dataType: 'json',
         success: function (data) {
             $('#category_types').on('change', function (event) {
+                $('#nominees_section').empty()
+
                 let id = $(this).val()
                 let newHTML = ''
 
