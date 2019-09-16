@@ -41,7 +41,7 @@ function loadCategoriesJSON () {
                                     </h2>
                                     `
 
-                        if (data.fields[i].description !== "") {
+                        if (data.fields[i].description) {
                             newHTML += `
                                         <p class="description">
                                             ${data.fields[i].description}
